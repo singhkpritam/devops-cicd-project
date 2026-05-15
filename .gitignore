@@ -1,0 +1,20 @@
+# Git
+.git
+
+# Logs
+*.log
+
+# Environment files
+.env
+
+# VS Code
+.vscode/
+
+# IntelliJ
+.idea/
+
+# Mac/Linux system files
+.DS_Store
+
+# Windows system files
+Thumbs.db

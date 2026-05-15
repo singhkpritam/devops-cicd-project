@@ -1,0 +1,133 @@
+/* <style> */
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body{
+      background:#0f172a;
+      color:white;
+    }
+
+    header{
+      background:#111827;
+      padding:20px 50px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+
+    header h1{
+      color:#38bdf8;
+    }
+
+    nav a{
+      color:white;
+      text-decoration:none;
+      margin-left:20px;
+      transition:0.3s;
+    }
+
+    nav a:hover{
+      color:#38bdf8;
+    }
+
+    .hero{
+      height:90vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      flex-direction:column;
+      text-align:center;
+      padding:20px;
+    }
+
+    .hero h2{
+      font-size:60px;
+      margin-bottom:20px;
+    }
+
+    .hero span{
+      color:#38bdf8;
+    }
+
+    .hero p{
+      max-width:700px;
+      line-height:1.7;
+      color:#cbd5e1;
+      margin-bottom:30px;
+    }
+
+    .btn{
+      background:#38bdf8;
+      color:black;
+      padding:14px 30px;
+      text-decoration:none;
+      border-radius:8px;
+      font-weight:bold;
+      transition:0.3s;
+    }
+
+    .btn:hover{
+      background:white;
+    }
+
+    .skills{
+      padding:80px 50px;
+      background:#1e293b;
+    }
+
+    .skills h2{
+      text-align:center;
+      margin-bottom:50px;
+      font-size:40px;
+    }
+
+    .skill-box{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:20px;
+    }
+
+    .card{
+      background:#111827;
+      padding:30px;
+      border-radius:12px;
+      text-align:center;
+      transition:0.3s;
+    }
+
+    .card:hover{
+      transform:translateY(-10px);
+      background:#0f172a;
+    }
+
+    .card h3{
+      color:#38bdf8;
+      margin-bottom:15px;
+    }
+
+    footer{
+      background:#111827;
+      text-align:center;
+      padding:20px;
+      color:#94a3b8;
+    }
+
+    @media(max-width:768px){
+      .hero h2{
+        font-size:40px;
+      }
+
+      header{
+        flex-direction:column;
+      }
+
+      nav{
+        margin-top:10px;
+      }
+    }
+
+  /* </style> */
