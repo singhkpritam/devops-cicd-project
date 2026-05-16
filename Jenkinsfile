@@ -1,5 +1,4 @@
 pipeline {
-
     agent any
 
     environment {
@@ -11,8 +10,7 @@ pipeline {
 
         stage('Clone Code') {
             steps {
-                git branch: 'main',
-                url: 'https://github.com/singhkpritam/devops-cicd-project.git'
+                git url: 'https://github.com/singhkpritam/devops-cicd-project.git', branch: 'main'
             }
         }
 
@@ -29,8 +27,7 @@ pipeline {
         stage('Deploy To Kubernetes') {
             steps {
                 sh '''
-                kubectl set image deployment/frontend-deployment \
-                frontend-container=$IMAGE_NAME:$IMAGE_TAG
+                kubectl set image deployment/frontend-deployment frontend-container=$IMAGE_NAME:$IMAGE_TAG
                 '''
             }
         }
