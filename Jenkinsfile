@@ -1,40 +1,32 @@
 pipeline {
     agent any
 
-    environment {
-        IMAGE_NAME = "devops-project"
-        IMAGE_TAG = "${BUILD_NUMBER}"
-    }
-
     stages {
 
-        stage('Clone Code') {
+        stage('Checkout') {
             steps {
-                git url: 'https://github.com/singhkpritam/devops-cicd-project.git', branch: 'main'
+                git 'https://github.com/singhkpritam/devops-cicd-project.git'
             }
         }
 
-        stage('Build Docker Image') {
+        stage('Build Image') {
+            steps {
+                sh 'docker build -t devops-project:${BUILD_NUMBER} .'
+            }
+        }
+
+        stage('Deploy') {
             steps {
                 sh '''
-                docker build -t devops-project:$BUILD_NUMBER .
+                kubectl set image deployment/frontend-deployment \
+                devops-project=devops-project:${BUILD_NUMBER}
                 '''
             }
         }
 
-        stage('Deploy To Kubernetes') {
+        stage('Verify') {
             steps {
-                sh '''
-                kubectl set image deployment/frontend-deployment frontend-container=$IMAGE_NAME:$IMAGE_TAG
-                '''
-            }
-        }
-
-        stage('Verify Deployment') {
-            steps {
-                sh '''
-                kubectl rollout status deployment/frontend-deployment
-                '''
+                sh 'kubectl rollout status deployment/frontend-deployment'
             }
         }
     }
