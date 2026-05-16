@@ -3,12 +3,6 @@ pipeline {
 
     stages {
 
-        stage('Checkout') {
-            steps {
-                git 'https://github.com/singhkpritam/devops-cicd-project.git'
-            }
-        }
-
         stage('Build Image') {
             steps {
                 sh 'docker build -t devops-project:${BUILD_NUMBER} .'
