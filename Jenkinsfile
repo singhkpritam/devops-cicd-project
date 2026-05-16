@@ -17,9 +17,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 sh '''
-                eval $(minikube docker-env)
-
-                docker build -t $IMAGE_NAME:$IMAGE_TAG .
+                docker build -t devops-project:$BUILD_NUMBER .
                 '''
             }
         }
