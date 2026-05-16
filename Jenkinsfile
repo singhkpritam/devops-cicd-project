@@ -5,7 +5,10 @@ pipeline {
 
         stage('Build Image') {
             steps {
-                sh 'docker build -t devops-project:${BUILD_NUMBER} .'
+                sh '''
+                eval $(minikube docker-env)
+                docker build -t devops-project:${BUILD_NUMBER} .
+                '''
             }
         }
 
@@ -14,6 +17,9 @@ pipeline {
                 sh '''
                 kubectl set image deployment/frontend-deployment \
                 devops-project=devops-project:${BUILD_NUMBER}
+
+                kubectl patch deployment frontend-deployment \
+                -p '{"spec":{"template":{"spec":{"containers":[{"name":"devops-project","imagePullPolicy":"Never"}]}}}}'
                 '''
             }
         }
